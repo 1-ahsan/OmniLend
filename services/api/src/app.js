@@ -1,5 +1,6 @@
 import express from "express";
 import { vendorRoutes } from "./vendor/vendor.module.js";
+import { authRoutes } from "./authentication/index.js";
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.get("/health", (req, res) => {
 });
 
 app.use("/api/vendors", vendorRoutes);
+app.use("/api/auth", authRoutes);
 
 // Handle unknown routes.
 app.use((req, res) => {
