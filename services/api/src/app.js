@@ -1,6 +1,6 @@
 import express from "express";
 import { vendorRoutes } from "./vendor/vendor.module.js";
-import { authRoutes } from "./authentication/index.js";
+import { authRoutes, authenticate } from "./authentication/index.js";
 
 const app = express();
 
@@ -13,7 +13,7 @@ app.get("/health", (req, res) => {
   });
 });
 
-app.use("/api/vendors", vendorRoutes);
+app.use("/api/vendors", authenticate,vendorRoutes); // tocken
 app.use("/api/auth", authRoutes);
 
 // Handle unknown routes.

@@ -10,6 +10,8 @@ import { AuthController } from "./presentation/controllers/AuthController.js";
 
 import { createAuthRoutes } from "./presentation/routes/authRoutes.js";
 
+import { authenticateToken } from "./presentation/middlewares/TokenVerification.js"
+
 
 // Infrastructure
 const authRepository = new PostgresAuthRepository();
@@ -33,3 +35,6 @@ const authController = new AuthController(loginUser);
 
 // Export routes
 export const authRoutes = createAuthRoutes(authController);
+
+// Expoet middlewares
+export const authenticate = authenticateToken(TokenService);
