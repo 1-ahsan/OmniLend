@@ -1,6 +1,7 @@
 import express from "express";
 import { vendorRoutes } from "./vendor/vendor.module.js";
 import { authRoutes } from "./authentication/index.js";
+import {inventoryRoutes} from "./inventory/inventory.module.js";
 
 const app = express();
 
@@ -15,7 +16,7 @@ app.get("/health", (req, res) => {
 
 app.use("/api/vendors", vendorRoutes);
 app.use("/api/auth", authRoutes);
-
+app.use("/api/inventory", inventoryRoutes);
 // Handle unknown routes.
 app.use((req, res) => {
   res.status(404).json({
