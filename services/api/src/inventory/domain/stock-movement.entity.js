@@ -6,7 +6,7 @@ export class StockMovement {
     id = null,
     tenantId,
     branchId,
-    itemId,
+    itemId = null, // null only for the opening movement, filled in by the repository
     type,
     quantityChange,
     quantityBefore,
@@ -15,12 +15,13 @@ export class StockMovement {
     createdBy = null,
     createdAt = null,
   }) {
-    if (!tenantId || !branchId || !itemId) {
-      throw new DomainError("Tenant, branch and item are required.");
+    if (!tenantId || !branchId) {
+      throw new DomainError("Tenant and branch are required.");
     }
     if (!isValidMovementType(type)) {
       throw new DomainError("Invalid stock movement type.");
     }
+
     this.id = id;
     this.tenantId = tenantId;
     this.branchId = branchId;
