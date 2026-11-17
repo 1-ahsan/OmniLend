@@ -1,4 +1,4 @@
-import { pool } from "../../../config/database.js";
+import { pool } from "../../../../config/database.js";
 import { User } from "../../domain/entities/User.js";
 
 export class PostgresAuthRepository {

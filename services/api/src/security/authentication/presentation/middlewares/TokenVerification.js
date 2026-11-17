@@ -1,4 +1,3 @@
-
 export function authenticateToken(tokenService) {
   return (req, res, next) => {
     try {
@@ -16,6 +15,7 @@ export function authenticateToken(tokenService) {
 
       // Verify access token.
       const decodedToken = tokenService.verifyAccessToken(token);
+
 
       // Attach decoded payload to request.
       req.user = decodedToken;

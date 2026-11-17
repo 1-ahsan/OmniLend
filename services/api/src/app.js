@@ -1,10 +1,14 @@
 import express from "express";
 import { vendorRoutes } from "./vendor/vendor.module.js";
-import { authRoutes, authenticate } from "./authentication/index.js";
+import { authRoutes, authenticate } from "./security/authentication/index.js";
+// import { authorize } from "./security/authorization/index.js"
+import { tenant } from "./tenant/index.js"
+
 
 const app = express();
 
 app.use(express.json({ limit: "1mb" }));
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/health", (req, res) => {
   res.status(200).json({
@@ -15,6 +19,7 @@ app.get("/health", (req, res) => {
 
 app.use("/api/vendors", authenticate,vendorRoutes); // tocken
 app.use("/api/auth", authRoutes);
+app.use("/api/tenant",tenant);
 
 // Handle unknown routes.
 app.use((req, res) => {

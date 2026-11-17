@@ -25,7 +25,7 @@ async function seed() {
     const values = [
       "admin1",
       "ahsan@example.com",
-      "$2a$10$wIY2ILjb4glE8ZbPkGy1WeaSdy7M1yWFmVE3MZO1lEq8beGPDPvL2",
+      "$2a$10$wIY2ILjb4glE8ZbPkGy1WeaSdy7M1yWFmVE3MZO1lEq8beGPDPvL2", // $2a$12$ytd19JoRaLN5msryoQPxkuSBsOdBLGzbhhiUM0pDYUBqf8ZRnEjpW - 1234
       "platform_admin",
       "active",
       null
