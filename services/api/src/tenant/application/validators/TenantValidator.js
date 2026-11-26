@@ -82,8 +82,8 @@ export class TenantValidator {
         // Status
         if (
             data.status &&
-            !["ACTIVE", "SUSPENDED", "INACTIVE"].includes(
-                data.status.toUpperCase()
+            !["active", "suspended", "inactive"].includes(
+                data.status.toLowerCase()
             )
         ) {
             errors.status = "Invalid tenant status";

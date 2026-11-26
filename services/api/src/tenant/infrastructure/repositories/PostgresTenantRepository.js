@@ -38,7 +38,7 @@ export class PostgresTenantRepository extends ITenantRepository {
                 owner_name,
                 owner_phone,
                 email,
-                owner_cinc,
+                owner_cnic,
                 head_office_address,
                 package_type,
                 status,
@@ -51,6 +51,14 @@ export class PostgresTenantRepository extends ITenantRepository {
             )
             RETURNING *;
         `;
+
+//         const q = ` SELECT
+//     table_schema,
+//     table_name,
+//     column_name
+// FROM information_schema.columns
+// WHERE table_name = 'tenants'
+// ORDER BY table_schema, ordinal_position; `;
 
         const values = [
             tenant.businessName,
@@ -65,6 +73,8 @@ export class PostgresTenantRepository extends ITenantRepository {
             JSON.stringify(tenant.addonModules || [])
         ];
 
+        // const a = await this.pool.query(q);
+        // console.log(a)
         const result = await this.pool.query(query, values);
 
         return this._mapToEntity(result.rows[0]);
