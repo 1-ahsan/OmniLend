@@ -19,7 +19,7 @@ export class PostgresTenantRepository extends ITenantRepository {
             ownerName: row.owner_name,
             ownerPhone: row.owner_phone,
             email: row.email,
-            ownerCnic: row.owner_cinc,
+            ownerCnic: row.owner_cnic,
             headOfficeAddress: row.head_office_address,
             packageType: row.package_type,
             status: row.status,
@@ -112,7 +112,7 @@ export class PostgresTenantRepository extends ITenantRepository {
             ownerName: "owner_name",
             ownerPhone: "owner_phone",
             email: "email",
-            ownerCnic: "owner_cinc",
+            ownerCnic: "owner_cnic",
             headOfficeAddress: "head_office_address",
             packageType: "package_type",
             addonModules: "addon_modules"
@@ -190,7 +190,7 @@ export class PostgresTenantRepository extends ITenantRepository {
                 suspension_reason = $2,
                 updated_at = NOW()
             WHERE id = $1
-              AND status = 'ACTIVE'
+              AND status = 'active'
             RETURNING *;
         `;
 
@@ -207,7 +207,7 @@ export class PostgresTenantRepository extends ITenantRepository {
                 suspension_reason = NULL,
                 updated_at = NOW()
             WHERE id = $1
-              AND status = 'SUSPENDED'
+              AND status = 'suspend'
             RETURNING *;
         `;
 

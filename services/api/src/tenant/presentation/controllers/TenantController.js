@@ -3,7 +3,7 @@ export class TenantController {
 
     constructor({
         createTenant,
-        getTenant,
+        getTenantById,
         getAllTenants,
         searchByEmail,
         updateTenant,
@@ -13,7 +13,7 @@ export class TenantController {
         updatePayment
     }) {
         this.createTenant = createTenant;
-        this.getTenant = getTenant;
+        this.getTenantById = getTenantById;
         this.getAllTenants = getAllTenants;
         this.searchByEmail = searchByEmail;
         this.updateTenant = updateTenant;
@@ -60,7 +60,7 @@ export class TenantController {
     // GET TENANT BY ID
     getById = async (req, res, next) => {
         try {
-            const tenant = await this.getTenant.execute(req.params.id);
+            const tenant = await this.getTenantById.execute(req.params.id);
 
             return res.status(200).json({
                 success: true,

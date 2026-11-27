@@ -3,7 +3,7 @@ import { pool } from "../config/database.js";
 import { PostgresTenantRepository } from "./infrastructure/repositories/PostgresTenantRepository.js";
 
 import CreateTenant from "./application/usecases/CreateTenant.js";
-import GetTenant from "./application/usecases/GetAllTenant.js";
+import SearchById from "./application/usecases/SearchTenantById.js";
 import GetAllTenants from "./application/usecases/GetAllTenant.js";
 import SearchByEmail from "./application/usecases/SearchTenantByEmail.js";
 import UpdateTenant from "./application/usecases/UpdateTenant.js";
@@ -21,7 +21,7 @@ const tenantRepository = new PostgresTenantRepository(pool);
 
 // Use case instances
 const createTenant = new CreateTenant(tenantRepository);
-const getTenant = new GetTenant(tenantRepository);
+const getTenantById = new SearchById(tenantRepository);
 const getAllTenants = new GetAllTenants(tenantRepository);
 const searchTenantByEmail = new SearchByEmail(tenantRepository);
 const updateTenant = new UpdateTenant(tenantRepository);
@@ -33,7 +33,7 @@ const updatePayment = new UpdateTenantPayment(tenantRepository);
 // Controller instance
 const tenantController = new TenantController({
     createTenant,
-    getTenant,
+    getTenantById,
     getAllTenants,
     searchTenantByEmail,
     updateTenant,

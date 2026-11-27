@@ -15,7 +15,7 @@ export default class SuspendTenant {
             throw new Error("Tenant not found");
         }
 
-        if (tenant.status !== "ACTIVE") {
+        if (tenant.status !== "active") {
             throw new Error("Only active tenants can be suspended");
         }
 
