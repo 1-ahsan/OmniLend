@@ -11,7 +11,7 @@ export default class ActivateTenant {
             throw new Error("Tenant not found");
         }
 
-        if (tenant.status !== "SUSPENDED") {
+        if (tenant.status !== "suspended") {
             throw new Error("Only suspended tenants can be activated");
         }
 

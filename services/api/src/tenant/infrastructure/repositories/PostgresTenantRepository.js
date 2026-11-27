@@ -186,8 +186,9 @@ export class PostgresTenantRepository extends ITenantRepository {
     async suspend(id,reason) {
         const query = `
             UPDATE tenants
-            SET status = 'SUSPENDED',
+            SET status = 'suspended',
                 suspension_reason = $2,
+                suspended_at = NOW(),
                 updated_at = NOW()
             WHERE id = $1
               AND status = 'active'
@@ -201,13 +202,15 @@ export class PostgresTenantRepository extends ITenantRepository {
 
     // ACTIVATE TENANT
     async activate(id) {
+        console.log(id)
         const query = `
             UPDATE tenants
-            SET status = 'ACTIVE',
+            SET status = 'active',
                 suspension_reason = NULL,
+                suspended_at = NULL,
                 updated_at = NOW()
             WHERE id = $1
-              AND status = 'suspend'
+              AND status = 'suspended'
             RETURNING *;
         `;
 
