@@ -43,7 +43,7 @@ exports.up = (pgm) => {
         ('manager:create', 'Create managers'),
         ('manager:view', 'View managers'),
         ('manager:update', 'Update managers'),
-        ('manager:delete', 'Delete managers'),
+        ('manager:delete', 'Delete managers');
 
 
         CREATE TABLE role_permissions (
@@ -85,3 +85,12 @@ exports.up = (pgm) => {
 
     `)
 }
+
+exports.down = (pgm) => {
+  pgm.sql(`
+    DROP TABLE IF EXISTS roles;
+    DROP TABLE IF EXISTS permissions;
+    DROP TABLE IF EXISTS role_permissions;
+
+  `);
+};
