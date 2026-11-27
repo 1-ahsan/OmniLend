@@ -1,4 +1,4 @@
-import { pool } from "../../../config/database.js";
+import { pool } from "../../../../config/database.js";
 import { IRoleRepository } from "../../domain/Repositories/IRoleRepository.js";
 
 export class PostgresRoleRepository extends IRoleRepository {

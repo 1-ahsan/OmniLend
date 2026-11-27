@@ -37,4 +37,4 @@ const authController = new AuthController(loginUser);
 export const authRoutes = createAuthRoutes(authController);
 
 // Expoet middlewares
-export const authenticate = authenticateToken(TokenService);
+export const authenticate = authenticateToken(tokenService);
