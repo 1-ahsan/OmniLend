@@ -1,0 +1,24 @@
+{
+  "name": "database",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migrate:create": "node-pg-migrate create -m ./migrations",
+    "migrate:up": "dotenv -e ../api/.env -- node-pg-migrate up -m ./migrations",
+    "migrate:down": "dotenv -e ../api/.env -- node-pg-migrate down -m ./migrations",
+    "seed:run": "node -r dotenv/config ../database/seeds/005_settingPermissions.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^18.0.10",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "dotenv-cli": "^11.1.0",
+    "node-pg-migrate": "^9.0.0"
+  }
+}
